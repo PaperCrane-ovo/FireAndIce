@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://balw2nmwgg0py"]
+
+[ext_resource type="Script" path="res://fireboy/fire_diamond.gd" id="1_0wdyb"]
+[ext_resource type="Texture2D" uid="uid://yk7lbbntiul2" path="res://fireboy/火钻石.jpg" id="1_72w6d"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n0xaf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_72w6d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77ups"]
+size = Vector2(36, 29)
+
+[node name="FireDiamond" type="Area2D"]
+script = ExtResource("1_0wdyb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_n0xaf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_77ups")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

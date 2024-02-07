@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://de1ppw3oyw2p3"]
+
+[ext_resource type="Script" path="res://icegirl/ice_diamond.gd" id="1_76wy7"]
+[ext_resource type="Texture2D" uid="uid://c7n04hgt5u5q6" path="res://icegirl/水钻石.jpg" id="1_wq5yd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f3uje"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wq5yd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7tpsi"]
+size = Vector2(31, 29)
+
+[node name="IceDiamond" type="Area2D"]
+script = ExtResource("1_76wy7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_f3uje")
+speed_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_7tpsi")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

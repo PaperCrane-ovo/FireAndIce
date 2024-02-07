@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxw8o5agevrta"]
+
+[ext_resource type="Script" path="res://fireboy/fireboy.gd" id="1_8ra86"]
+[ext_resource type="Texture2D" uid="uid://c2786hnj03elj" path="res://fireboy/fireboy_4.png" id="2_iej5d"]
+[ext_resource type="Texture2D" uid="uid://c6gyiau32644j" path="res://fireboy/fireboy_0.png" id="3_4yn06"]
+[ext_resource type="Texture2D" uid="uid://b1r1car156j1i" path="res://fireboy/fireboy_1.png" id="4_pyeom"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_08q8h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_iej5d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4yn06")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pyeom")
+}],
+"loop": true,
+"name": &"right",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u7y0a"]
+size = Vector2(126.667, 400)
+
+[node name="fireboy" type="CharacterBody2D"]
+scale = Vector2(0.15, 0.15)
+script = ExtResource("1_8ra86")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_08q8h")
+frame_progress = 0.264803
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, 40)
+shape = SubResource("RectangleShape2D_u7y0a")

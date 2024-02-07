@@ -1,0 +1,430 @@
+[gd_scene load_steps=36 format=3 uid="uid://bwfud3i26wphl"]
+
+[ext_resource type="Texture2D" uid="uid://dc0eomd3pc6e2" path="res://levels/游戏主页面背景.jpg" id="1_s3u20"]
+[ext_resource type="PackedScene" uid="uid://bmqmkory5k15b" path="res://icegirl/ice_one.tscn" id="2_rsy1l"]
+[ext_resource type="PackedScene" uid="uid://dxw8o5agevrta" path="res://fireboy/fire_one.tscn" id="3_d5wux"]
+[ext_resource type="PackedScene" uid="uid://balw2nmwgg0py" path="res://fireboy/fire_diamond.tscn" id="4_p10xb"]
+[ext_resource type="PackedScene" uid="uid://de1ppw3oyw2p3" path="res://icegirl/ice_diamond.tscn" id="5_cdt8k"]
+[ext_resource type="Script" path="res://levels/Water.gd" id="6_fp6uc"]
+[ext_resource type="Script" path="res://levels/Fire.gd" id="7_0l0ml"]
+[ext_resource type="Script" path="res://levels/Poison.gd" id="8_0vhid"]
+[ext_resource type="Texture2D" uid="uid://cjd41ne2qjf8a" path="res://levels/水门.jpg" id="9_g61hh"]
+[ext_resource type="Script" path="res://levels/WaterDoor.gd" id="9_rm8ll"]
+[ext_resource type="Script" path="res://levels/FireDoor.gd" id="10_n0l4f"]
+[ext_resource type="Texture2D" uid="uid://cbdcpctv7ntkd" path="res://levels/火门.jpg" id="11_x5bft"]
+[ext_resource type="Script" path="res://levels/ControlButton.gd" id="13_lct6d"]
+[ext_resource type="Texture2D" uid="uid://dahnayaywkbyt" path="res://levels/控制按钮1.jpg" id="14_btvjt"]
+[ext_resource type="Script" path="res://levels/ControlDoor.gd" id="15_h7k8d"]
+[ext_resource type="Texture2D" uid="uid://d2j7qhtuhpebp" path="res://levels/移动板1.jpg" id="16_h40rp"]
+[ext_resource type="Texture2D" uid="uid://dhucm7h0nidxo" path="res://levels/木板.jpg" id="17_m5ujc"]
+[ext_resource type="Texture2D" uid="uid://byhphpfberj3p" path="res://levels/按钮3.jpg" id="18_emgxr"]
+[ext_resource type="Script" path="res://levels/Back.gd" id="19_1j1jx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yfrp0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_g61hh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6gnhr"]
+size = Vector2(46, 61)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exdlx"]
+size = Vector2(46, 61)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fdogg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_x5bft")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f0uyb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_btvjt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sxp2u"]
+size = Vector2(40, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ne3eu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_h40rp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vktn"]
+size = Vector2(20, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mr2cc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_m5ujc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_udglw"]
+size = Vector2(97, 20)
+
+[sub_resource type="Animation" id="Animation_hqt62"]
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -1.5708, -3.14159, -4.71239, -6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_3mxa1"]
+resource_name = "rotate"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.5708, 3.14159, 4.71239, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3707p"]
+_data = {
+"RESET": SubResource("Animation_hqt62"),
+"rotate": SubResource("Animation_3mxa1")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_ug6ua"]
+font_size = 77
+font_color = Color(1, 0, 0, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nm08h"]
+font_size = 99
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4q1f3"]
+font_size = 46
+font_color = Color(1, 0.0431373, 0.137255, 1)
+outline_size = 25
+shadow_size = 0
+
+[node name="Level2" type="Node2D"]
+
+[node name="背景" type="TextureRect" parent="."]
+offset_right = 1012.0
+offset_bottom = 760.0
+texture = ExtResource("1_s3u20")
+
+[node name="边缘墙壁" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="边缘墙壁"]
+build_mode = 1
+polygon = PackedVector2Array(38, 37, 41, 136, 794, 138, 795, 160, 818, 159, 819, 189, 871, 190, 873, 215, 772, 217, 771, 189, 748, 191, 747, 168, 42, 167, 43, 464, 114, 464, 116, 537, 891, 542, 891, 570, 39, 572, 40, 719, 170, 719, 188, 731, 367, 732, 390, 718, 566, 716, 593, 732, 745, 732, 770, 720, 895, 718, 896, 669, 945, 668, 947, 618, 971, 618, 971, 442, 166, 447, 165, 418, 220, 418, 237, 428, 414, 428, 438, 417, 438, 389, 566, 389, 566, 412, 593, 429, 755, 429, 770, 415, 844, 414, 846, 340, 895, 339, 897, 264, 971, 262, 971, 41)
+
+[node name="icegirl" parent="." instance=ExtResource("2_rsy1l")]
+position = Vector2(123, 654)
+scale = Vector2(0.1, 0.1)
+
+[node name="fireboy" parent="." instance=ExtResource("3_d5wux")]
+z_index = 4
+position = Vector2(63, 653)
+scale = Vector2(0.1, 0.1)
+
+[node name="水池1" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="水池1"]
+polygon = PackedVector2Array(161, 670, 391, 670, 391, 644, 368, 658, 190, 658, 161, 643)
+
+[node name="水池2" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="水池2"]
+polygon = PackedVector2Array(564, 644, 564, 670, 771, 671, 772, 643, 746, 657, 595, 656, 564, 643)
+
+[node name="FireDiamond" parent="." instance=ExtResource("4_p10xb")]
+position = Vector2(327, 705)
+
+[node name="FireDiamond2" parent="." instance=ExtResource("4_p10xb")]
+position = Vector2(227, 705)
+
+[node name="FireDiamond3" parent="." instance=ExtResource("4_p10xb")]
+position = Vector2(478, 103)
+
+[node name="FireDiamond4" parent="." instance=ExtResource("4_p10xb")]
+position = Vector2(476, 354)
+
+[node name="FireDiamond5" parent="." instance=ExtResource("4_p10xb")]
+position = Vector2(731, 506)
+
+[node name="FireDiamond6" parent="." instance=ExtResource("4_p10xb")]
+position = Vector2(403, 506)
+
+[node name="FireDiamond7" parent="." instance=ExtResource("4_p10xb")]
+position = Vector2(708, 630)
+
+[node name="FireDiamond8" parent="." instance=ExtResource("4_p10xb")]
+position = Vector2(631, 629)
+
+[node name="IceDiamond" parent="." instance=ExtResource("5_cdt8k")]
+position = Vector2(709, 706)
+
+[node name="IceDiamond2" parent="." instance=ExtResource("5_cdt8k")]
+position = Vector2(634, 707)
+
+[node name="IceDiamond3" parent="." instance=ExtResource("5_cdt8k")]
+position = Vector2(330, 630)
+
+[node name="IceDiamond4" parent="." instance=ExtResource("5_cdt8k")]
+position = Vector2(228, 630)
+
+[node name="IceDiamond5" parent="." instance=ExtResource("5_cdt8k")]
+position = Vector2(607, 505)
+
+[node name="IceDiamond6" parent="." instance=ExtResource("5_cdt8k")]
+position = Vector2(277, 507)
+
+[node name="IceDiamond7" parent="." instance=ExtResource("5_cdt8k")]
+position = Vector2(531, 355)
+
+[node name="IceDiamond8" parent="." instance=ExtResource("5_cdt8k")]
+position = Vector2(533, 103)
+
+[node name="Water1" type="Area2D" parent="."]
+position = Vector2(112, 290)
+script = ExtResource("6_fp6uc")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Water1"]
+polygon = PackedVector2Array(49, 352, 77, 367, 255, 368, 281, 353)
+
+[node name="Water2" type="Area2D" parent="."]
+position = Vector2(112, 290)
+script = ExtResource("6_fp6uc")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Water2"]
+position = Vector2(416, 77)
+scale = Vector2(0.844828, 1)
+polygon = PackedVector2Array(49, 352, 77, 367, 255, 368, 281, 353)
+
+[node name="Fire1" type="Area2D" parent="."]
+position = Vector2(112, 290)
+script = ExtResource("7_0l0ml")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Fire1"]
+position = Vector2(6, 118.159)
+scale = Vector2(0.944504, 0.884767)
+polygon = PackedVector2Array(49, 352, 77, 367, 255, 368, 281, 353)
+
+[node name="Fire2" type="Area2D" parent="."]
+position = Vector2(112, 290)
+script = ExtResource("7_0l0ml")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Fire2"]
+position = Vector2(395, 41)
+scale = Vector2(0.944504, 0.884767)
+polygon = PackedVector2Array(61.4079, 351.505, 94.2294, 367.329, 255, 368, 281, 353)
+
+[node name="Poison1" type="Area2D" parent="."]
+script = ExtResource("8_0vhid")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Poison1"]
+polygon = PackedVector2Array(219, 416, 241, 430, 416, 430, 439, 416)
+
+[node name="Poison2" type="Area2D" parent="."]
+script = ExtResource("8_0vhid")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Poison2"]
+position = Vector2(351, 0)
+polygon = PackedVector2Array(219, 416, 241, 430, 399, 430, 418, 415)
+
+[node name="WaterDoor" type="Area2D" parent="."]
+position = Vector2(76, 108)
+script = ExtResource("9_rm8ll")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="WaterDoor"]
+z_index = 1
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_yfrp0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterDoor"]
+position = Vector2(-1, -6)
+shape = SubResource("RectangleShape2D_6gnhr")
+
+[node name="FireDoor" type="Area2D" parent="."]
+position = Vector2(150, 105)
+script = ExtResource("10_n0l4f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FireDoor"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_exdlx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FireDoor"]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_fdogg")
+
+[node name="ControlButton1" type="Area2D" parent="."]
+z_index = 1
+position = Vector2(341, 535)
+script = ExtResource("13_lct6d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ControlButton1"]
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_f0uyb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ControlButton1"]
+position = Vector2(-1, -5)
+shape = SubResource("RectangleShape2D_sxp2u")
+
+[node name="ControlButton2" type="Area2D" parent="."]
+position = Vector2(665, 532)
+script = ExtResource("13_lct6d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ControlButton2"]
+position = Vector2(0, -2)
+sprite_frames = SubResource("SpriteFrames_f0uyb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ControlButton2"]
+shape = SubResource("RectangleShape2D_sxp2u")
+
+[node name="ControlDoor" type="StaticBody2D" parent="."]
+position = Vector2(511, 501)
+script = ExtResource("15_h7k8d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ControlDoor"]
+position = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_ne3eu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ControlDoor"]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_5vktn")
+
+[node name="Board" type="AnimatableBody2D" parent="."]
+position = Vector2(328, 339)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Board"]
+sprite_frames = SubResource("SpriteFrames_mr2cc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board"]
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_udglw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Board"]
+libraries = {
+"": SubResource("AnimationLibrary_3707p")
+}
+autoplay = "rotate"
+
+[node name="Board2" type="AnimatableBody2D" parent="."]
+position = Vector2(684, 342)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Board2"]
+position = Vector2(3.8147e-06, -3.8147e-06)
+sprite_frames = SubResource("SpriteFrames_mr2cc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board2"]
+position = Vector2(-7.62939e-06, 0)
+shape = SubResource("RectangleShape2D_udglw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Board2"]
+libraries = {
+"": SubResource("AnimationLibrary_3707p")
+}
+autoplay = "RESET"
+
+[node name="LoseText" type="Label" parent="."]
+visible = false
+offset_left = 256.0
+offset_top = 200.0
+offset_right = 772.0
+offset_bottom = 494.0
+text = "你失败了！！"
+label_settings = SubResource("LabelSettings_ug6ua")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WinText" type="Label" parent="."]
+visible = false
+offset_left = 236.0
+offset_top = 314.0
+offset_right = 830.0
+offset_bottom = 510.0
+text = "你成功了！！"
+label_settings = SubResource("LabelSettings_nm08h")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BugText" type="Label" parent="."]
+visible = false
+offset_left = 176.0
+offset_top = 347.0
+offset_right = 850.0
+offset_bottom = 411.0
+text = "你似乎发现了不为人知的秘密……"
+label_settings = SubResource("LabelSettings_4q1f3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="Button" parent="."]
+z_index = 5
+offset_left = 10.0
+offset_top = 11.0
+offset_right = 205.0
+offset_bottom = 66.0
+scale = Vector2(0.71, 0.71)
+icon = ExtResource("18_emgxr")
+script = ExtResource("19_1j1jx")
+
+[connection signal="body_entered" from="Water1" to="Water1" method="_on_body_entered"]
+[connection signal="body_entered" from="Water2" to="Water2" method="_on_body_entered"]
+[connection signal="body_entered" from="Fire1" to="Fire1" method="_on_body_entered"]
+[connection signal="body_entered" from="Fire2" to="Fire2" method="_on_body_entered"]
+[connection signal="body_entered" from="Poison1" to="Poison1" method="_on_body_entered"]
+[connection signal="body_entered" from="Poison2" to="Poison2" method="_on_body_entered"]
+[connection signal="body_entered" from="WaterDoor" to="WaterDoor" method="_on_body_entered"]
+[connection signal="body_exited" from="WaterDoor" to="WaterDoor" method="_on_body_exited"]
+[connection signal="body_entered" from="FireDoor" to="FireDoor" method="_on_body_entered"]
+[connection signal="body_exited" from="FireDoor" to="FireDoor" method="_on_body_exited"]
+[connection signal="body_entered" from="ControlButton1" to="ControlButton1" method="_on_body_entered"]
+[connection signal="body_exited" from="ControlButton1" to="ControlButton1" method="_on_body_exited"]
+[connection signal="hit" from="ControlButton1" to="ControlDoor" method="_on_control_button_1_hit"]
+[connection signal="unhit" from="ControlButton1" to="ControlDoor" method="_on_control_button_1_unhit"]
+[connection signal="body_entered" from="ControlButton2" to="ControlButton2" method="_on_body_entered"]
+[connection signal="body_exited" from="ControlButton2" to="ControlButton2" method="_on_body_exited"]
+[connection signal="hit" from="ControlButton2" to="ControlDoor" method="_on_control_button_2_hit"]
+[connection signal="unhit" from="ControlButton2" to="ControlDoor" method="_on_control_button_2_unhit"]
+[connection signal="pressed" from="Back" to="Back" method="_on_pressed"]
